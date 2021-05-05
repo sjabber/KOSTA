@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class swing_day_05_03 {
+public class Calculator {
 
     private JFrame frame;
     private JLabel lblNewLabel;
@@ -23,7 +23,7 @@ public class swing_day_05_03 {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    swing_day_05_03 window = new swing_day_05_03();
+                    Calculator window = new Calculator();
                     window.frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -35,7 +35,7 @@ public class swing_day_05_03 {
     /**
      * Create the application.
      */
-    public swing_day_05_03() {
+    public Calculator() {
         initialize();
     }
 
