@@ -1,4 +1,4 @@
-package swing;
+package week5_swing;
 
 import javax.swing.*;
 import java.awt.*;
@@ -213,7 +213,7 @@ public class Calculator {
         });
 
         // 숫자
-        ButtonEventTest number = new ButtonEventTest(save, k_sign, textField, lblNewLabel, check);
+        ButtonEvent number = new ButtonEvent(save, k_sign, textField, lblNewLabel, check);
 
         btn_0.addActionListener(number);
         btn_1.addActionListener(number);
@@ -346,7 +346,7 @@ class ButtonSign implements ActionListener {
 }
 
 // Note 숫자 눌렀을 경우
-class ButtonEventTest implements ActionListener {
+class ButtonEvent implements ActionListener {
 
     String[] save;
     String[] k_sign;
@@ -354,15 +354,15 @@ class ButtonEventTest implements ActionListener {
     JLabel label;
     boolean[] check;
 
-    public ButtonEventTest(JTextField textField) {
+    public ButtonEvent(JTextField textField) {
         this.textField = textField;
     }
 
-    public ButtonEventTest(String temp) {
+    public ButtonEvent(String temp) {
         temp = temp;
     }
 
-    public ButtonEventTest(String[] save, String[] k_sign, JTextField textField, JLabel label, boolean[] check) {
+    public ButtonEvent(String[] save, String[] k_sign, JTextField textField, JLabel label, boolean[] check) {
         this.save = save;
         this.k_sign = k_sign;
         this.textField = textField;
@@ -398,8 +398,5 @@ class ButtonEventTest implements ActionListener {
                 textField.setText(n);
             }
         }
-
-
     }
-
 }
