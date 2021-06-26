@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <title>DOM 이벤트 처리</title>
+</head>
+<body>
+<button><span>버튼</span>클릭</button>
+<hr/> <!--수평선-->
+<div>
+    DIV1. 버튼이 클릭되면 토글됩니다.
+</div>
+<form action="http://www.daum.net">
+    <input type="text" name="id" value="id" required maxlength="5"/><br/>
+    <input type="password" name="pwd" value="pwd1"/><br/>
+    <input type="text" name="name" value="n1"/><br/>
+    <button type="submit">전송</button> <!--form 태그 안의 button은 디폴트가 type="submit" 이다.-->
+</form>
+<hr/>
+<select class='sido'>
+    <option>시, 도</option>
+    <option>서울 특별시</option>
+    <option>경기도</option>
+    <option>제주도</option>
+</select>
+<select class='sigungu' style='display: none'>
+    <option>시군구</option>
+</select>
+<select class='dong' style='display: none'>
+    <option>읍면동</option>
+</select>
+<hr/>
+<div class="checkbox">
+    <input type="checkbox" class="all"/>ALL<br/>
+    <input type="checkbox" class="one" checked/>ONE&nbsp;&nbsp;&nbsp;
+    <input type="checkbox" class="one"/>TWO&nbsp;&nbsp;&nbsp;
+    <input type="checkbox" class="one" checked/>THREE
+</div>
+
+
+<!-- 클릭 => element body 에 해당한다. -->
+<!--    <button>클릭</button>-->
+<script>
+    // DOM 트리에서 button 객체 찾기
+    // dom에 관련된 객체
+    // 돔트리에서 객체를 찾을 때 id 속성값을 가지고 찾겠다.
+    // id 속성 남발하는건 좋지 못하다. 예전에는 이 메서드를 정말 많이 썼다.
+    // window.document.getElementById();
+
+    // 클래스 이름에 해당하는 요소들을 찾는 작업. 모든 요소에 클래스 속성이 있어야 찾을 수 있음.
+    // window.document.getElementsByClassName();
+
+    // 쿼리 셀렉터로 찾겠다. 쿼리셀렉터 메서드를 활용하는게 더 일반적이다. 인자값으로 해당 객체를 찾기 위한 선택자만 적어주면 됨.
+    // css 선택자가 js 에서도 활용되는 모습. 인자값은 문자열로 줘야한다.
+    // 객체값을 반환한다. btObj 에는 객체가 담기고 객체에 대한 잘못된 값이면 null 이 담긴다.
+    var btObj = window.document.querySelector('button'); // 클래스 셀렉터로 찾고자 할 경우 button.a, #bt1
+    console.log(btObj);
+    console.log(typeof btObj);
+    console.log(btObj.innerHTML); //<span>버튼</span>클릭
+    console.log(btObj.innerText); // 버튼클릭
+    btObj.innerHTML = '자바스크립트 클릭';
+    btObj.style.color = 'red';
+    // style
+    // 객체입장 => 프로퍼티
+    // 태그입장 => 어트리뷰트
+
+    // 버튼객체가 클릭되었을 때 할일을 적는다.
+    //DOM 트리에서 div 객체 찾기
+    var divObj = window.document.querySelector('div');
+
+    // 버튼이 클릭되었을 때 div영역을 사라지게 한다.
+    btObj.addEventListener('click', function () {
+        alert('클릭되었습니다.');
+
+        var bgArr = ['yellow', 'green', 'gray', 'white']; // 배경색 배열
+
+        // css 가 js에서 응용되는 모습.
+        if (divObj.style.display === 'none') {
+            divObj.style.display = 'block';
+            // CSS 에서는 background-color 로 사용
+            // JS 에서 사용가능한 특수문자는 #, _ 만 가능 => - 사용불가
+            divObj.style.backgroundColor = bgArr[parseInt(Math.random() * 4)]; // 0.0 <= 4.0
+            console.log(randomNum);
+        } else {
+            divObj.style.display = 'none';
+        }
+
+    });
+
+    // 전송버튼이 클릭되었을 떄 할 일
+    // var btsubmotObj = document.querySelector('form > button[type=submit]');
+    // btsubmotObj.addEventListener('click', function () {
+    //   alert('전송버튼 클릭됨');
+    // });
+
+    // 자동으로 발생한다.
+    var formObj = document.querySelector('form');
+    formObj.addEventListener('submit', function (event) {
+        alert('폼 전송됨');
+        // DOM 에서 id 입력객체 찾기
+        var idObj = document.querySelector('form > input[name=id]');
+
+        // id 입력값 유효성 검사
+        var idValue = idObj.value;
+        if (idValue == 'admin') {
+            alert('id를 다시 입력하세요');
+            idObj.select();
+            idObj.focus();
+            //return false; // 서버로 전송하지 않음
+            event.preventDefault(); // submit 전송을 자동처리하는것을 안하겠다. (기본값 방지)
+        }
+    });
+
+    // 시도를 선택했을때 할 일
+    // 시군구객체 찾기, 시군구 객체 보여주기
+    // 시도객체의 value가 서울특별시인 경우 // 시군구 객체의 element body를 <option>중구</option>, <option>강남구</option>,
+    // <option>강북구</option>, <option>강동구</option>, <option>강서구</option>로 변경
+
+    // 시군구 객체 보여주기
+    var sidoObj = document.querySelector('select.sido');
+    /*
+        // 클릭까지 처리하면 이벤트 헨들러가 할 일이 너무 많아짐.
+        sidoObj.addEventListener('click', function () {
+          // alert('시도클릭됨');
+          console.log('시도클릭됨');
+        });
+    */
+
+    var sigunguOptions = {
+        seoul: ['중구', '강북구', '강동구', '강서구', '강남구'],
+        gyeonggi: ['성남시', '평택시', '안성시', '용인'],
+        jeju: ['서귀포시', '제주시']
+    };
+
+    sidoObj.addEventListener('change', function () {
+        // alert('시도변경됨');
+        // console.log(sidoObj.value + ' 시도변경됨');
+
+        var sigunguObj = document.querySelector('select.sigungu');
+        sigunguObj.style.display = 'inline';
+
+        switch (sidoObj.value) {
+            case '서울 특별시':
+                sigunguObj.innerHTML = '<option>' + sigunguOptions.seoul[0] + '</option>';
+
+                for (let i = 1; i < sigunguOptions.seoul.length; i++) {
+                    sigunguObj.innerHTML += '<option>' + sigunguOptions.seoul[i] + '</option>';
+                }
+                break;
+            case '경기도':
+                sigunguObj.innerHTML = '<option>' + sigunguOptions.gyeonggi[0] + '</option>';
+
+                for (let i = 1; i < sigunguOptions.gyeonggi.length; i++) {
+                    sigunguObj.innerHTML += '<option>' + sigunguOptions.gyeonggi[i] + '</option>';
+                }
+                break;
+
+            case '제주도':
+                sigunguObj.innerHTML = '<option>' + sigunguOptions.jeju[0] + '</option>';
+
+                for (let i = 1; i < sigunguOptions.jeju.length; i++) {
+                    sigunguObj.innerHTML += '<option>' + sigunguOptions.jeju[i] + '</option>';
+                }
+                break
+            default:
+                return;
+        }
+    });
+    // submit 버튼이 클릭되었을 때 submit이 자동 발생한다.
+
+    //checkbox checked 속성값 얻기
+    //DOM트리에서 class 속성값이 one인 요소 찾기
+    var oneObj = document.querySelector('div.checkbox > input.one');
+    // console.log(oneObj.checked);
+
+    //DOM 트리에서 class속성값이 all인 요소찾기
+    //var allObj = document.querySelector('div.checkbox > input.all');
+    // var checkboxObjArr = document.querySelectorAll('div.checkbox > input');
+    // //:not() => 의미상 반대
+    //
+    // checkboxObjArr[0].addEventListener('click', function () {
+    //     // allObj 객체가 클릭되었을때 선택되면 one, two, three 객체도 선택되도록,
+    //     // 선택해제되면 전부 선택해제되도록
+    //     for (var i = 1; i < checkboxObjArr.length; i++) {
+    //         checkboxObjArr[i].checked = checkboxObjArr[0].checked;
+    //     }
+    // });
+    var allObj = document.querySelector('div.checkbox > input.all');
+    var checkboxObjArr = document.querySelectorAll('div.checkbox > input:not(.all)');
+    // console.log(checkboxObjArr);
+
+    allObj.addEventListener('click', function () {
+      for (var i = 0; i < checkboxObjArr.length; i++) {
+        // one, two, three
+        checkboxObjArr[i].checked = allObj.checked;
+      }
+    });
+
+    // id입력란에서 엔터값을 누르면 FORM의 submit 이벤트가 자동 발생한다.
+    // 엔터값을 처리
+    var idObj = document.querySelector('form > input[name=id]');
+    idObj.addEventListener('keydown', function (event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+      }
+    })
+
+    var $chkboxAllObj = $("div.checkbox>input.all");
+    var $chkboxObjArr = $("div.checkbox>input:not(.all)"); //one,two,three
+    $chkboxAllObj.click(function () {
+        $chkboxObjArr.prop("checked", $chkboxAllObj.prop("checked"));
+    });
+
+</script>
+</body>
+</html>

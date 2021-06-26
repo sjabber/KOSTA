@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>구조화된 태그</title>
+    <style>
+        header {
+            color: blue;
+            background-color: yellow;
+        }
+
+        section {
+            border: 1px solid;
+            width: 75%;
+            height: 500px;
+            float: left;
+        }
+
+        aside {
+            border: 1px solid;
+            width: 15%;
+            height: 500px;
+            float: left;
+        }
+
+        /*
+        그냥 a 태그라 적는게 아니라 정확히 어느 위치에 있는 a 태그인지 이렇게 명시한다.
+        */
+        nav > ol > li > a {
+            text-decoration: none;
+        }
+
+        nav > ol {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+    </style>
+</head>
+<section></section>
+<body>
+<footer>
+    사업자등록번호 : 201-81-21515 (주)스타벅스커피 코리아 대표이사 : 송 데이비드 호섭 TEL : 1522-3232 개인정보 책임자 : 하익성
+</footer>
+<header>KOSTABUCKS</header>
+<!-- nav태그는 네비게이션 링키들의 집합을 표현할 때 사용 -->
+<nav>
+    <ol>
+        <li><a href="#">메뉴1</a></li>
+        <li><a href="#">메뉴2</a></li>
+        <li><a href="#">메뉴3</a></li>
+    </ol>
+</nav>
+<section>
+    <article>여름의 시작을 함께할 인도네시아 웨스트 자바. 허브의 복합적인 풍미와 낮은 산미,
+        은은하게 달콤한 바닐라향이 매력적인 원두
+    </article>
+    <article>차별화된 커피 경험을 누릴 수 있는 리저브 매장, 다양한 방법으로 편리하게 즐길 수 있는 드라이브 스루 매장,
+        함께해서 더 따뜻할수 있는 지역사회 소통 공간 커뮤니티 매장
+    </article>
+</section>
+<section>
+    <aside>KOSTABUCKS 현대카드</aside>
+</section>
+</body>
+<footer>
+
+</footer>
+</html>

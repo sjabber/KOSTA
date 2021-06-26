@@ -1,0 +1,98 @@
+<!DOCTYPE HTMLhtml>
+<html>
+<head>
+    <title>첫번째 HTML입니다.</title>
+    <meta charset="UTF-8"/>
+    <!-- 인코딩이 깨지는 경우 meta 태그를 살펴보자. -->
+</head>
+<body>
+<h1 id="top">WELCOME!</h1>
+<h3>김태호's First HTML</h3>
+<h6>작은 제목</h6>
+
+<!--상대경로-->
+<img src="images/newimg.jpg" alt="뉴스이미지"/>
+<img src="images/newimg.jpg" width="300" height="300" alt="뉴스이미지"/>
+<img src="images/newimg.jpg" width="300" alt="뉴스이미지 상대경로"/>
+<!--절대경로-->
+<img src="C:\Users\Taeho\Desktop\newimg.jpg" width="300" alt="뉴스이미지 절대경로"/>
+
+<!-- img태그는 변형된 인라인 요소라 봐야한다. -->
+<img src="images/newimg.jpg" style="width: 100px; height: 100px; margin: 10px; border: 1px solid" width="300"
+     alt="인라인 블럭요소"/>
+<img src="images/newimg.jpg" style="width: 100px; height: 100px; margin: 10px; border: 1px solid" width="300"
+     alt="인라인 블럭요소"/>
+
+<hr/>
+
+<table border="1" width="300" height="300">
+    <thead>
+    <!--th 가운데 정렬 굴게-->
+    <tr>
+        <th>이름</th>
+        <th>주소</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>김태호</td>
+        <td>서울</td>
+    </tr>
+    <tr>
+        <td>홍길동</td>
+        <td>분당</td>
+    </tr>
+    </tbody>
+</table>
+
+<table border="1" width="300" height="300">
+    <!--크롬기준 tbody태그가 없으면 자동으로 끼워넣음(소스에서 확인가능)-->
+    <tr>
+        <th>이름</th>
+        <th>주소</th>
+    </tr>
+    <tr>
+        <td>김태일</td>
+        <td>수원</td>
+    </tr>
+    <tr>
+        <td>홍길동</td>
+        <td>분당</td>
+    </tr>
+    <tr>
+        <td>김근완</td>
+        <td>성남</td>
+    </tr>
+    <tr>
+        <td rowspan="2">>코스타</td>
+        <td>가산</td>
+    </tr>
+    <tr>
+        <td>분당</td>
+    </tr>
+    <tr>
+        <td colspan="2">총 인원수 4</td>
+    </tr>
+</table>
+
+<!--목록-->
+<!-- 리스트를 보여준다. -->
+<ul style="list-style-type: square;">
+    <li>ONE</li>
+    <li>TWO</li>
+    <li>THREE</li>
+</ul>
+
+<ol style="list-style-type: upper-roman">
+    <li>ONE</li>
+    <li>TWO</li>
+    <li>THREE</li>
+</ol>
+
+<a href="http://www.daum.net">다음</a>
+<a href="http://www.google.com">구글</a>
+<a href="boxmodel.html">박스모델 (상대경로)</a>
+<a href="C:\Users\Taeho\Desktop\boxmodel.html">박스모델 (절대경로)</a>
+<a href="#top">위로</a>
+</body>
+</html>

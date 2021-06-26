@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        // 팝업창 띄우는 작업
+        // 문서 내용(DOM Tree)을 다 읽어서 화면에 보여줄 준비가 되었을 때 load 이벤트가 발생한다.
+        window.addEventListener('load', function () {
+            var btOpenObj = document.querySelector('button.popopen'); // 여러 버튼들 중에서 첫번째 버튼만 찾는 쿼리셀렉터
+            var win1;
+
+            btOpenObj.addEventListener('click', function () {
+                var url = '../searchzip_teacher.html';
+                var name = 'searchzip'; //팝업창에 해당하는 name, 이에 해당하는 창이 있으면 다시 뜨지 않게 하기 위함.
+                var opt = 'width=310 height=310';
+                win1 = window.open(url, name, opt);
+            });
+
+            var btCloseObj = document.querySelector('button.popclose');
+            btCloseObj.addEventListener('click', function () {
+                win1.close(); // 정확히 팝업창이 close되지 않음.
+            })
+
+            var btIntervalObj = document.querySelector('button.interval');
+            var intervalID;
+            btIntervalObj.addEventListener('click', function () {
+                intervalID = window.setInterval(function () {
+                    var now = new Date();
+                    var nowStr =
+                        now.getFullYear() +
+                        "/" +
+                        (now.getMonth() + 1) +
+                        "/" +
+                        now.getDate() +
+                        " " +
+                        now.getHours() +
+                        ":" +
+                        now.getMinutes() +
+                        ":" + now.getSeconds();
+                    document.querySelector('div>div.interval').innerHTML = nowStr;
+                }, 1000 * 1);
+            });
+
+            var btClearIntervalObj = document.querySelector('button.clearInterval');
+            btClearIntervalObj.addEventListener('click', function () {
+                window.clearInterval(intervalID);
+            });
+
+
+            var btTimeoutObj = document.querySelector("button.timeout");
+            var timerID;
+            btTimeoutObj.addEventListener('click', function(){
+                timerID = window.setTimeout(function(){
+                    window.alert("10초가 지났습니다");
+                }, 10*1000);
+            });
+
+            var btClearTimeoutObj = document.querySelector("button.clearTimeout");
+            btClearTimeoutObj.addEventListener('click', function(){
+                window.clearTimeout(timerID);
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+<button class='popopen'>새창 띄우기</button>
+<button class='popclose'>새창 닫기</button>
+<button class='interval'>1초 간격</button>
+<button class='clearInterval'>1초간격 해제</button>
+<button class="timeout">10초후 경고창띄우기(타이머)</button>
+<button class="clearTimeout">타이머해제</button>
+
+<div>
+    <span class='zipcode'>우편번호값</span><span class='baseaddr'>기본주소값</span>
+    <div class='interval'></div>
+</div>
+</body>
+</html>

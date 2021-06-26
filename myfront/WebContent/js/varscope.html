@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        var a = 'GLOBAL VARIABLE';
+        console.log(window.a); // 'GLOBAL VARIABLE'
+        if (true) {
+            var ifa = 'if 블럭변수';
+            console.log('if안 ifa :' + ifa);
+        }
+        // 자바스크립트는 블럭 바깥에서도 변수를 사용이 가능하다.
+        // 자바스크립트는 {}를 특정 스코프로 생각하지 않는다.
+        console.log('if밖 ifa :' + ifa);
+        for (var fora = 0; fora < 1; fora++) {
+            console.log('for안 : fora=' + fora);
+        }
+        console.log('for밖 : fora=' + fora);
+
+        // todo 함수안에 선언한 변수는 함수 안에서만 사용이 가능하다. (함수의 경우에는 스콥(scope)영역이 생긴다.)
+        //--------------------------함수 SCOPE ------------------------------//
+        var f = function () {
+            var fa = true;
+            console.log('function안 :fa=' + fa); // true 출력
+        };
+        //--------------------------함수 SCOPE ------------------------------//
+        f();
+        // console.log('function밖 :fa=' + fa); // 에러 (undefined)
+
+
+        var f1 = function () {
+            var f1a = "f1함수 스코프 변수";
+            var f11 = function () {
+                console.log("반환함수입니다." + f1a);
+                var f11b = 10;
+                return f1a;
+            };
+            //console.log(f11b); => 함수가 중첩되어있을 뿐이지 f11 함수의 바깥에 있으므로 is not defined가 발생한다.
+            return f11;
+        };
+        // var returnF = f1();
+        // console.log(returnF); //returnF();
+        var returnF11 = f1(); // f11 반환
+        var returnF11value = returnF11(); // returnF11value 는 f11 함수가 담긴다.
+        console.log(returnF11value);
+        //--------------------------------------
+        var f2 = function () {
+            var f2a = 'f2a';
+            var f22 = function () {
+                var f22b = 'f22b';
+            };
+        };
+
+        // 자바스크립트 최상위 내장객체 => window 객체
+        var f3 = function (f) {
+            var f3a = 'f3a';
+            f();
+        };
+
+        f3(f2);
+
+
+        var name = '오문정';
+        var f4 = function (param) {
+            var name = '김근완';
+            param();
+        };
+
+        f4(function () {
+            console.log(name);
+        });
+
+        var a = 10;
+        var b = '10';
+        console.log(a == b);
+        console.log(a === b);
+
+        //new A();
+        var obj = {
+            prod_no: 'C0001',
+            prod_price: 1500,
+            display: function () {
+                // javascript 에서는 반드시 this를 써야 현재 객체의 프로퍼티를 사용할 수 있다.
+                console.log(this.prod_no);
+            }
+        };
+
+        obj.display();
+        // 메서드 > 객체 안의 기능, function > 혼자서 작동이 가능한 기능
+        // 함수는 기능 자체를 의미 하는 것이며, 메소드는 클래스나, 구조체, 열거형 내부에 작성된 함수를 의미 하는것 이다.
+
+        //JSON
+
+
+        f4(function () {
+            // console.log(name);
+            alert(name);
+        })
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

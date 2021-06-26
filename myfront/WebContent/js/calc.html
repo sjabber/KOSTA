@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        // 버튼들이 화면에 보여줄 준비가 되면 window 객체에서 load 이벤트가 발생,
+        // load 이벤트가 할 일을 두번째 매개변수인 콜백함수에 적어준다.
+        window.addEventListener('load', function () {
+            // CSS 에서 사용한 선택자를 이용하여 객체를 찾아오고 이것들을 배열로 만든다.
+            // var btArr = document.querySelectorAll('button');
+            // for (var i = 0; i < btArr.length; i++) {
+            //     (function (i) {
+            //
+            //         // Note 정확하게 이해하고 넘어가야한다.
+            //         // 앞으로 클릭이벤트가 발생하면 이런 메시지를 콘솔에 출력하라고 예약을 걸어두는 작업이다.
+            //         btArr[i].addEventListener('click', function () {
+            //             // 이상태 그대로 쓰면 오류가 발생한다.
+            //             // 배열 안의 객체마다 해야할 일들이 다르게 적용되어져야한다.
+            //             console.log(i + 1 + '버튼 클릭됨');
+            //
+            //
+            //         });
+            //         // 이벤트 프로그래밍은 지금 당장 어떤일을 하라! 가 아니라 앞으로 이런 일을 해! 라고 예약을 걸어두는 것
+            //         // 그러므로 이 반복문이 끝날때까지는 한번도 이 console.log 가 출력되지 않음
+            //         //
+            //     })(i);
+            // }
+
+
+            // 버튼 클릭이 발생했을 경우
+            // btArr[0].addEventListener('click', function () {
+            //   console.log('1버튼 클릭됨');
+            // });
+            // btArr[1].addEventListener('click', function () {
+            //   console.log('2버튼 클릭됨');
+            // });
+            // btArr[2].addEventListener('click', function () {
+            //   console.log('3버튼 클릭됨');
+            // });
+
+            // Note forEach 함수 쓰면 매우 간단! ⇒ 각 객체별로 간편하게 할당됨.
+            btArr.forEach(function (value, index) {
+                value.addEventListener('click', function () {
+                    console.log(index + 1 + '버튼 클릭됨');
+                })
+            });
+        });
+
+        // 그래서 저것처럼 반복문 쓰지 말고 foreach 쓰라는 말씀이심.
+        // 왜 복잡한지 알기 위해 한 실습.
+    </script>
+</head>
+<body>
+<button>1</button>
+<button>2</button>
+<button>3</button>
+</body>
+</html>

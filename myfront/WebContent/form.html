@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>Insert title here</title>
+</head>
+<body>
+<div>
+    <h3>html5에 추가된 입력양식</h3>
+    <!-- form 태그 바깥에 있는 input 태그는 전송되지 않는다. 이를 전송하기 위해선 form 속성에 form id의 이름을 적어준다. -->
+    <input name="t1" form="f1">
+    <button type="submit" form="f1">폼밖에서 전송</button>
+    <form id="f1" action="http://www.daum.net" autocomplete="off">
+    </form>
+
+    <form action="http://www.daum.net" method="post" autocomplete="off">
+        <label> 검색 : <input type="search" name="sc" value="x로 쉽게 내용 삭제"/></label>
+        <br>
+        <label> 숫자 : <input type="number"/></label> <!-- 모바일에서는 숫자 키패드가 나온다. -->
+        <br>
+        <label> 이메일 : <input type="email"/></label><br> <!-- 이메일 -->
+        <label> 전화번호 : <input type="tel"/></label><br> <!-- 전화번호 -->
+        <label> 날짜 : <input type="date"/></label><br> <!-- date picker -->
+        <!--            <input type="datetime"/> &lt;!&ndash; date picker &ndash;&gt;-->
+
+        <label> placdeholder : <input type="text" placeholder="이름을 입력하세요"/></label><br>
+        <label> required : <input type="text" required/></label><br>
+        <label> readonly : <input type="text" value="읽기전용" readonly/></label><br>
+        <label> min, max : <input type="number" min="1" max="10" value="5"/></label><br>
+        <!--<input type="text" required="required">-->
+        <!--속성명과 속성값이 같은 경우 속성명만 적어주면 된다. 반드시 입력해야 할 값이 있어야 할 경우 사용한다.-->
+        <!--        <button>일반버튼1</button> &lt;!&ndash; button type="button"과 같음&ndash;&gt;-->
+    </form>
+
+</div>
+<div>
+    <!--    <h3>기본 입력양식</h3>-->
+    <!--입력양식-->
+    <form action="http://www.daum.net" method="post">
+        <label> 서버 전송용 속성 name : <input type="text" name="t" value="this is text form..."/></label><br>
+        <label> 비밀번호 : <input type="password" name="p"/></label><br>
+        <fieldset> <!--fieldset으로 그룹핑 함으로써 체크박스를 테두리로 묶는다.-->
+            <legend>다중선택</legend> <!--체크박스 테두리에 이름을 지어줄 수 있다.-->
+            <label><input type="checkbox" name="c" value="c1" checked/>ONE&nbsp;&nbsp;&nbsp;</label>
+            <label><input type="checkbox" name="c" value="c2"/>TWO&nbsp;&nbsp;&nbsp;</label>
+            <label><input type="checkbox" name="c" value="c3" checked/>THREE</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>단일선택</legend>
+            <label><input type="radio" name="r" value="r1"/> ONE&nbsp;&nbsp;&nbsp;</label>
+            <label><input type="radio" name="r" value="r2"/> TWO&nbsp;&nbsp;&nbsp;</label>
+            <label><input type="radio" name="r" value="r3"/> THREE</label>
+        </fieldset>
+        <label>파일업로드 : <input type="file"/></label>
+        숫자 : <input type="hidden" name="h" value="hiddenValue"/><br>
+
+        <label>select : <select name="s">
+            <!-- select 태그 하위에는 option 태그가 필요하다. -->
+            <option value="s1">ONE</option>
+            <option value="s2">TWO</option>
+            <option>THREE</option>
+        </select></label>
+        <label>textarea : <textarea rows="3" cols="10">여러줄입력란...</textarea>
+        </label>
+
+        <fieldset>
+            <legend>input type용 버튼들</legend>
+            <label> 숫자 : <input type="button" value="일반버튼1"/></label> <!--추후 자바스크립트로 기능을 추가한다.-->
+            <label> 숫자 : <input type="submit" value="전송1"/></label>
+            <label> 숫자 : <input type="reset" value="CLEAR1"/></label>
+        </fieldset>
+        <fieldset>
+            <legend>button type용 버튼들</legend>
+            <button type="button">일반버튼2</button>
+            <button type="submit">전송2</button>
+            <button type="reset">CLEAR2</button>
+        </fieldset>
+
+        <button>전송3</button> <!--button type="submit"과 같음-->
+    </form>
+        <button>일반버튼3</button> <!-- button type="button"과 같음-->
+
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>박스모델</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <div
+      style="
+        width: 200px;
+        height: 400px;
+        /*시계방향으로 설정된다.*/
+        padding: 10px 20px 30px 40px;
+        /*상하, 좌우*/
+        border-width: 40px 30px;
+        border-style: solid;
+        margin: 5px;
+      "
+    >
+      DIVISION1 대표 블럭요소입니다. <br />
+      모든 요소는 가로세로 크기를 갖습니다. <br />
+      다른요소와의 간격(margin), 테두리(border), 테두리와 실제내용과의
+      간격(margin) 테두리(border), 테두리와 실제내용과의 간격(padding)을
+      갖습니다.
+    </div>
+    <!-- div는 자동 줄바꿈이 된다. -->
+    <div>DIV2</div>
+    <div>DIV3</div>
+
+    <!-- span은 자동 줄바꿈이 되지 않는다. -->
+    <!-- span은 상하 margin 을 무시한다. -->
+    <span
+      style="
+        width: 200px;
+        height: 400px;
+        /*시계방향으로 설정된다.*/
+        padding: 10px 20px 30px 40px;
+        /*상하, 좌우*/
+        border-width: 40px 30px;
+        border-style: solid;
+        margin: 5px;
+      "
+      >SPAN1</span
+    >
+    <span>SPAN2</span>
+    <span>SPAN3</span>
+  </body>
+</html>

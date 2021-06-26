@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        var a, b;
+        a = 3;
+        b = 4;
+        console.log(a + b);
+        console.log(a - b);
+        console.log(a * b);
+        console.log(a / b); // ?
+        console.log(a % b);
+
+        a = true;
+        console.log(a + b); // boolean + number =>  1 + 4 => 5출력
+        console.log(a - b); // boolean - number => 1 - 4 => -3출력
+
+        a = '1'; // string 타입의 1
+        console.log(a + b); // string + number => number 가 string 으로 변환됨 => 문자열 결합 14 (숫자아님)
+        console.log(a - b); // string - number => 1 - 4
+
+        //**********************************************//
+        a = 3;
+        b = 4;
+        console.log(a > b);
+
+        a = true; // boolean -> number 로 자동형변환 1 > 4
+        console.log(a > b); // false
+
+        a = '1'; // string -> number 로 자동형변환 1 > 4
+        console.log(a > b); // false
+
+        //**********************************************//
+        a = true;
+        b = false;
+        console.log(a && b); // false
+        console.log(!a); // false
+
+        //**********************************************//
+        a = 3;
+        b = 4;
+        a += b;
+        console.log(a); //7
+
+        //**********************************************//
+        console.log('증감연산자');
+        // 증감연산자는 혼자 독립적으로 쓰는건 좋지만
+        // 다른 연산자와 같이 쓰는건 매우 안좋다.
+        a = 3;
+        // a++; //a++; //++a;
+        b = a++ + a++; // 3 + 4 가 된다. (++가 나중에 처리되기 때문!) 매우 비추천하는 방식
+        console.log('b=' + b + ', a=' + a); //b = 7, a = 5
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

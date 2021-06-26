@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>실습</title>
+    <style>
+      header {
+        color: blue;
+        background-color: #ffff00;
+        font-weight: bold;
+        font-size: 2em;
+        width: 80%;
+        height: 150px;
+        line-height: 150px;
+        margin: 0px auto;
+        text-align: center;
+      }
+
+      header > a.logo {
+        background-image: url("./images/starbuckslogo.png");
+        height: 75px;
+        width: 75px;
+        margin: 25px 0px;
+        display: block;
+        float: left;
+      }
+      header > img {
+        float: left;
+        position: relative;
+        top: 7.5px;
+        left: 10px;
+      }
+      nav {
+        background-color: blueviolet;
+      }
+      nav > ol > li > a {
+        text-decoration: none;
+      }
+      nav > ol {
+        list-style: none;
+        font-size: 30px;
+        font-weight: bold;
+        padding-left: 0px;
+      }
+      nav > ol > li {
+        float: left;
+        margin: 10px 30px;
+      }
+      section {
+        /* float: left; */
+        clear: both;
+        margin-bottom: 10px;
+        border: 1px solid;
+        width: 75%;
+        height: 500px;
+      }
+      aside {
+        float: right;
+        /* display: inline-block; */
+      }
+      aside > a {
+        text-decoration: none;
+      }
+      article {
+        border-style: solid;
+        background-image: url("./images/pattern.png");
+        background-repeat: repeat-x;
+        margin: 10px;
+        overflow: auto;
+        display: inline-block;
+        /* width: 400px;
+        height: 50px; */
+      }
+      footer {
+        border-style: solid;
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a class="logo" href="#"></a>
+      KOSTABUCKS
+    </header>
+    <nav>
+      <ol>
+        <li>
+          <a href="#"><font color="white">메뉴1</font></a>
+        </li>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <li>
+          <a href="#"><font color="white">메뉴2</font></a>
+        </li>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <li>
+          <a href="#"><font color="white">메뉴3</font></a>
+        </li>
+      </ol>
+    </nav>
+    <section>
+      <article>
+        여름의 시작을 함께할 인도네시아 웨스트 자바. 허브의 복합적인 풍미와 낮은
+        산미, 은은하게 달콤한 바닐라향이 매력적인 원두
+      </article>
+
+      <article>
+        차별화된 커피 경험을 누릴 수 있는 리저브 매장, 다양한 방법으로 편리하게
+        즐길 수 있는 드라이브 스루 매장, 함께해서 더 따뜻할수 있는 지역사회 소통
+        공간 커뮤니티 매장
+      </article>
+    </section>
+
+    <aside>
+      <a href="">
+        <img src="./images/hdcard.png" alt="현대카드" />
+        <figcaption>KOSTABUCKS 현대카드</figcaption>
+      </a>
+    </aside>
+
+    <footer>
+      사업자등록번호 : 201-81-21515 (주)스타벅스커피 코리아 대표이사 : 송
+      데이비드 호섭 TEL : 1522-3232 개인정보 책임자 : 하익성 ⓒ 2021 Starbucks
+      Coffee Company. All Rights Reserved.
+    </footer>
+  </body>
+</html>
