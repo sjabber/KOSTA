@@ -7,16 +7,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class MyConnection {
-	
-	public static Connection getConnection() throws SQLException { // ������ ������ ���Ѱܾ� �Ѵ�.
-		
-		
+	// throws => 사용자가 예외를 처리한다.
+	// try, catch => 여기서 예외를 처리한다.
+	public static Connection getConnection() throws SQLException {
+
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "hr";
 		String password = "1673";
 
 		Connection con = null;
-		con = DriverManager.getConnection(url, user, password); // ������ ������ ���Ѱܾ� �Ѵ�.
+		con = DriverManager.getConnection(url, user, password);
 
 		return con;
 	}

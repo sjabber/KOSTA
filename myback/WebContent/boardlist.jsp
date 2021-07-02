@@ -4,9 +4,9 @@
 <%-- boardlist.jsp --%>
 <% PageBean<Board> pb = (PageBean)request.getAttribute("pb");
     pb.getCurrentPage();
-    pb.getTotalPage();
+/*     pb.getTotalPage();
     pb.getList();
     pb.getStartPage();
     pb.getEndPage();
-    pb.getUrl();
+    pb.getUrl(); */
 %>
