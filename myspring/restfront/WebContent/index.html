@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(function() {
+	/* 게시글 추가버튼 클릭 시작  */
+	$('button.post.write').click(function() {
+		//var dataStr = $('form').serialize();
+		//console.log(dataStr); //title=~~~&content=~~~
+		//form serialize값 --> js객체로 변환 --> json문자열로 변환
+		//"data" : json문자열 하면 끝~
+		
+		//var title = $('form>input[name=title]').val();
+		//var content = $('form>textarea[name=content]').val();
+		
+		var formSerializeArray =  $('form').serializeArray();
+		var formSerialize = $('form').serialize();
+		console.log('--formSerializeArray--');
+		console.log(formSerializeArray); // [{name:요청전달데이터 name, value:요청전달 데이터값}, {}]
+		console.log('-----------------------');
+		
+		console.log('--formSerialize--');
+		console.log(formSerialize);
+		console.log('-----------------------');
+		
+		var object = {};
+		for (var i = 0; i < formSerializeArray.length; i++){
+		    object[formSerializeArray[i]['name']] = formSerializeArray[i]['value'];
+		}		 
+		var data = JSON.stringify(object);
+		
+		$.ajax({
+			  "method": "POST",
+			  "transformRequest": [
+			    null
+			  ],
+			  "transformResponse": [
+			    null
+			  ],
+			  "jsonpCallbackParam": "callback",
+			  "url": "http://localhost:8888/restspring/board/write",
+			  "headers": {
+			    "Accept": "application/json, text/plain, */*",
+			    "Content-Type": "application/json;charset=utf-8"
+			  },
+			  //"data": '{\"title\":\"' + title + '\",\n\"Content\":\"' + content + '\"\n}',
+			  "data" : data,
+			  "timeout": {},
+			  "success": function(responseObj) {
+				  if(responseObj.status == 1) {
+					  alert(responseObj.msg);
+				  }
+			  }
+			});
+	});
+	$('button.post.reply').click(function() {
+		$.ajax({
+			  "method": "POST",
+			  "transformRequest": [
+			    null
+			  ],
+			  "transformResponse": [
+			    null
+			  ],
+			  "jsonpCallbackParam": "callback",
+			  "url": "http://localhost:8888/restspring/board/reply/123",
+			  "headers": {
+			    "Accept": "application/json, text/plain, */*",
+			    "Content-Type": "application/json;charset=utf-8"
+			  },
+			  "data": "{\n\"title\" : \"답글제목\", \n\"content\" : \"답글내용\"\n}",
+			  "timeout": {},
+			  "success": function(responseObj) {
+					  alert(responseObj.msg);
+			  }
+			});
+	});
+	$('button.get.all').click(function() {
+		$.ajax({
+			  "method": "GET",
+			  "transformRequest": [
+			    null
+			  ],
+			  "transformResponse": [
+			    null
+			  ],
+			  "jsonpCallbackParam": "callback",
+			  "url": "http://localhost:8888/restspring/board/list",
+			  "headers": {
+			    "Accept": "application/json, text/plain, */*"
+			  },
+			  "data": "",
+			  "timeout": {},
+			  success: function(responseObj) {
+				  alert("get.all 정상처리");
+				  var sectionHtml = '';
+				  $(responseObj).each(function(i, e) {
+					  sectionHtml += e.no + ":" + e.title + ":" + e.content;
+					  sectionHtml += '<br>';
+				  });
+				  $('section').empty();
+				  $('section').html(sectionHtml);
+			  }
+			});
+	});
+	$('button.get.info').click(function() {
+		var no = 12345;
+		$.ajax({
+			  "method": "GET",
+			  "transformRequest": [
+			    null
+			  ],
+			  "transformResponse": [
+			    null
+			  ],
+			  "jsonpCallbackParam": "callback",
+			  "url": "http://localhost:8888/restspring/board/" + no,
+			  "headers": {
+			    "Accept": "application/json, text/plain, */*"
+			  },
+			  "data": "",
+			  "timeout": {},
+			  success: function(responseObj) {
+				  alert("get.info 정상처리");
+				  var sectionHtml = '';
+				  $(responseObj).each(function(i, e) {
+					  sectionHtml += e.no + ":" + e.title + ":" + e.content;
+					  sectionHtml += '<br>';
+				  });
+				  $('section').empty();
+				  $('section').html(sectionHtml);
+			  }
+			});
+	});
+	
+	$('button.get.word').click(function() {
+		var word = "가나다";
+		$.ajax({
+			  "method": "GET",
+			  "transformRequest": [
+			    null
+			  ],
+			  "transformResponse": [
+			    null
+			  ],
+			  "jsonpCallbackParam": "callback",
+			  "url": "http://localhost:8888/restspring/board/list/" + word,
+			  "headers": {
+			    "Accept": "application/json, text/plain, */*"
+			  },
+			  "data": "",
+			  "timeout": {},
+			  success: function(responseObj) {
+				  alert("get.word 정상처리");
+				  var sectionHtml = '';
+				  $(responseObj).each(function(i, e) {
+					  sectionHtml += e.no + ":" + e.title + ":" + e.content;
+					  sectionHtml += '<br>';
+				  });
+				  $('section').empty();
+				  $('section').html(sectionHtml);
+			  }
+			});
+	});
+	$('button.put').click(function() {
+		$.ajax({
+			  "method": "PUT",
+			  "transformRequest": [
+			    null
+			  ],
+			  "transformResponse": [
+			    null
+			  ],
+			  "jsonpCallbackParam": "callback",
+			  "url": "http://localhost:8888/restspring/board/123",
+			  "headers": {
+			    "Accept": "application/json, text/plain, */*",
+			    "Content-Type": "application/json;charset=utf-8"
+			  },
+			  "data": "{\n\"title\":\"제목수정\",\n\"Content\":\"내용수정\"\n}",
+			  "timeout": {},
+			  success:function() {
+				  alert("수정성공");
+			  }, error:function() {
+				  alert("수정실패");
+			  }
+			});
+	});
+	
+	$('button.delete').click(function() {
+		$.ajax({
+			  "method": "DELETE",
+			  "transformRequest": [
+			    null
+			  ],
+			  "transformResponse": [
+			    null
+			  ],
+			  "jsonpCallbackParam": "callback",
+			  "url": "http://localhost:8888/restspring/board/123",
+			  "headers": {
+			    "Accept": "application/json, text/plain, */*",
+			  },
+			  "data": "{\n\"title\":\"제목수정\",\n\"Content\":\"내용수정\"\n}",
+			  "timeout": {},
+			  success:function() {
+				  alert("삭제성공");
+			  }, error:function() {
+				  alert("삭제실패");
+			  }
+			})
+	})
+});
+</script>
+</head>
+<body>
+<button class="post write">게시글 추가</button>
+<button class="post reply">답글 추가</button>
+<button class="get all">게시글 전체목록</button>
+<button class="get info">게시글 상세</button>
+<button class="get word">게시글 단어로 검색</button>
+<button class="put">게시글 수정</button>
+<button class="delete">게시글 삭제</button>
+<form>
+	<input type="text" name="title" value="제목1">
+	<textarea name="content">내용1</textarea>
+</form>
+<section></section>
+</body>
+</html>

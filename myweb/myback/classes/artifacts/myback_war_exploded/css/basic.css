@@ -1,0 +1,9 @@
+* {
+    box-sizing: border-box;
+}
+/* 테스트 용도 */
+body {
+    /* !important 로 설정하면 아무리 덮어씌워져도 이부분은 변하지 않는다. */
+    /* 우선순위 0순위 */
+    background-color: white !important;
+}

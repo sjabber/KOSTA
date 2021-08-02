@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!--    <settings>
+        <setting name="jdbcTypeForNull" value="NULL"/>
+    </settings>-->
+    <!-- Null값을 insert하고 싶은 경우 위의 설정을 추가한다. -->
+    <typeAliases>
+        <typeAlias type="com.day.dto.Customer" alias="customer" />
+        <typeAlias type="com.day.dto.Product" alias="product" />
+        <typeAlias type="com.day.dto.OrderInfo" alias="orderinfo"/>
+        <typeAlias type="com.day.dto.OrderLine" alias="orderline"/>
+    </typeAliases>
+<!--    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                &lt;!&ndash;         <property name="driver" value="${driver}"/>
+                        <property name="url" value="${url}"/>
+                        <property name="username" value="${username}"/>
+                        <property name="password" value="${password}"/> &ndash;&gt;
+                <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+                <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+                <property name="username" value="hr"/>
+                <property name="password" value="1673"/>
+            </dataSource>
+        </environment>
+    </environments>-->
+    <mappers>
+        <!--  <mapper resource="org/mybatis/example/BlogMapper.xml"/> -->
+        <!-- sql용 mapping 파일은 Mapper 파일이라 정한다. -->
+        <mapper resource="ProductMapper.xml"/>
+        <mapper resource="CustomerMapper.xml"/>
+        <mapper resource="OrderMapper.xml"/>
+    </mappers>
+</configuration>

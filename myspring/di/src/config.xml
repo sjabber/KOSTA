@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	<!-- <bean name="c" class="com.day.dto.Customer" scope="prototype"> -->
+	<bean name="c" class="com.day.dto.Customer">
+		<property name="id" value="id1"></property>
+		<property name="pwd" value="p1"></property>
+		<property name="name" value="김태호"></property>
+	</bean>
+<!-- bean태그를 component-scan태그로 대신한다. -->
+<!-- 	<bean name="customerDAO" class="com.day.dao.CustomerDAOOracle"></bean> -->
+
+	<bean name="p" class="com.day.dto.Product">
+		<constructor-arg index="0" value="C0001"></constructor-arg>
+		<constructor-arg index="1" value="아메리카노"></constructor-arg>
+		<constructor-arg index="2" value="1000"></constructor-arg> <!-- 이 방법은 초기화이지 DI가 아님. -->
+		<constructor-arg index="3">
+			<null />
+		</constructor-arg>
+		<constructor-arg index="4" value=""></constructor-arg>
+	</bean>
+
+	<!-- injection은 미리 만들어진 객체를 레퍼런스 하여 사용한다. -->
+<!-- bean태그를 component-scan태그로 대신한다. -->
+<!-- 	<bean name="productService" class="com.day.service.ProductService"> -->
+		<!-- <property name="dao" ref="productDAO"></property> --> <!-- setter injection -->
+		<!-- <constructor-arg index="0" ref="productDAO"></constructor-arg> constructor injection, index 번호순으로 매개변수에 들어감. -->
+<!-- 	</bean> -->
+
+<!--	
+	<bean name="productDAO1" class="com.day.dao.ProductDAOOracle"/>
+	<bean name="productDAO2" class="com.day.dao.ProductDAOFile"/>
+-->
+
+	<!--<context:annotation-config></context:annotation-config>-->
+	<context:component-scan base-package="com.day.dao"></context:component-scan> <!-- 해당 디렉토리에서 @Component 어노테이션이 붙은 클래스들을 관리하게 된다. -->
+	<context:component-scan base-package="com.day.service"></context:component-scan>
+</beans>

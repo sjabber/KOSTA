@@ -1,0 +1,48 @@
+<div>
+    <div class="input-group">
+        <label for="title">제목</label>
+        <input id="title" name="title" placeholder="제목을 입력해주세요." type="text">
+    </div>
+    <div class="input-group">
+        <label for="content">작성자ID</label>
+        <input name="id" id="id" readonly>
+    </div>
+    <div class="input-group">
+        <label for="content">내용</label>
+        <textarea name="content" id="content"></textarea>
+    </div>
+    <div>
+        <button type="button" class="btn btn-primary writeBtn" onclick="regist()">등록</button>
+    </div>
+</div>
+<script>
+    CKEDITOR.replace('contents');
+
+    function regist() {
+        const title = $('#title').val();
+        const content = CKEDITOR.instances.content.getData();
+
+        alert(content);
+
+        const formData = {
+            boardTitle: title,
+            boardContent: content
+        };
+
+        $.ajax({
+            url: 'http://localhost:8888/boardrestspring/board/write',
+            method: 'post',
+            data: JSON.stringify(formData),
+            success: function (responseObj) { //응답 성공
+                if (responseObj.status === 1) {
+                    $('div.collapse > ul.nav > li > a.list').trigger("click");
+                } else {
+                    alert(responseObj.msg);
+                }
+            },
+            error: function (jqXHR) { //응답 실패
+                alert("에러:" + jqXHR.status)
+            }
+        });
+    }
+</script>

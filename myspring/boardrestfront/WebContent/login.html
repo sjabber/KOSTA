@@ -1,0 +1,102 @@
+<link href="css/login.css" rel="stylesheet"/>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script>
+    $("#authForm").keypress(function (e) {
+        if (e.keyCode === 13) {
+            Login();
+        }
+    });
+
+    function checkCapsLock(event) {
+        if (event.getModifierState("CapsLock")) {
+            $('#message').text("Caps Lock이 켜져 있습니다.");
+        } else {
+            $('#message').text("");
+        }
+    }
+
+    function Login() {
+        var id = $('form#authForm > fieldset > .box_login > .input-box > #loginId').val();
+        var pwd = $('form#authForm > fieldset > .box_login > .input-box > #loginPw').val();
+        if (id === "") {
+            alert("아이디를 입력하세요.");
+        } else if (pwd === "") {
+            alert("패스워드를 입력하세요.");
+        } else {
+            var backurl = '/Add_it/login';
+            $.ajax({
+                url: backurl,
+                method: 'post',
+                accept: 'application/json',
+                data: JSON.stringify({
+                    'id': id,
+                    'pwd': pwd
+                }),
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                /*{
+                    id: $('form#authForm > fieldset > .box_login > .input-box > #loginId').val(),
+                    pwd: $('form#authForm > fieldset > .box_login > .input-box > #loginPw').val(),
+                },*/
+                success: function (responseObj) {
+                    if (responseObj.status == 1) {
+                        location.href = '../main.html';
+                    } else {
+                        alert("로그인 실패, " + responseObj.msg);
+                    }
+                },
+                error: function (xhr) {
+                    alert(xhr.status);
+                },
+            });
+        }
+    }
+</script>
+<div class="page_container">
+    <div class="page_top">
+        <div class="page_top_title">
+            <h1>회원 로그인</h1>
+        </div>
+    </div>
+    <div class="inner_login">
+        <div class="login_form">
+            <form method="post" id="authForm" action="">
+                <fieldset>
+                    <div class="box_login">
+                        <div class="input-box">
+                            <label for="loginId" class="screen_out">아이디</label>
+                            <input type="text" id="loginId" name="loginId" placeholder="ID"
+                                   onkeyup="checkCapsLock(event)">
+                        </div>
+                        <div class="input-box">
+                            <label for="loginPw" class="screen_out"> 비밀번호</label>
+                            <input type="password" id="loginPw" name="password" placeholder="Password"
+                                   onkeyup="checkCapsLock(event)">
+                        </div>
+                    </div>
+                    <div id="message"></div>
+                    <button type="button" class="btn_kakao_login"
+                            onclick="location.href='https://kauth.kakao.com/oauth/authorize?' +
+                             'response_type=code&client_id=a1be24597949e454b86b2921694fc65b&' +
+                              'redirect_uri=http://localhost:8888/Add_it/login&response_type=code'">
+                        카카오 간편 로그인 (개인회원)</button>
+                    <button type="button" class="btn_login" onclick="Login()">로그인</button>
+                    <div class="login_state">
+                        <div class="inp_chk">
+                            <input type="checkbox" class="lg_radio" id="keepLogin" name="keepLogin">
+                            <label for="keepLogin" class="lg_lb">
+                                <span class="img_top ico_check"></span>
+                                <span class="login_span">로그인 상태 유지</span>
+                            </label>
+                        </div>
+                        <span class="id_find">
+                            <a href="#" class="link_find">아이디</a>
+                                        /
+                            <a href="#" class="link_find">비밀번호 찾기</a>
+                        </span>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

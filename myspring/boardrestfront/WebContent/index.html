@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
+    <title>Title</title>
+</head>
+<style>
+    section {
+        margin-bottom: 15px;
+        clear: both;
+        /*border: 1px solid;*/
+        width: 100%;
+        height: 100%;
+        float: left;
+    }
+
+    article {
+        background-image: url('https://www.starbucks.co.kr/common/img/main/store_exp_img03.png');
+        border: 1px solid;
+        height: 100%;
+        padding: 10px;
+        margin: 5px;
+    }
+
+    .container {
+        width: 70%;
+        height: 900px
+    }
+
+    button.writeBtn {
+        float: right;
+    }
+
+    nav.navbar-default {
+        height: 70px;
+    }
+
+    .box {
+        display: flex;
+        align-items: center;
+    }
+
+    .content > td {
+        text-align: center;
+    }
+
+    .nav1 {
+        padding-top: 10px;
+        color: #817DF0;
+    }
+
+    .nav2 {
+        float: right;
+        padding-top: 10px;
+        color: #817DF0;
+    }
+
+    button.writeBtn {
+        float: right;
+    }
+
+    nav.navbar-default {
+        height: 70px;
+    }
+
+    .box {
+        display: flex;
+        align-items: center;
+    }
+
+    .content > td {
+        text-align: center;
+    }
+
+    .searchForm {
+        margin: 0 auto;
+        text-align: center;
+        width: 100%;
+    }
+
+    .searchForm > form {
+        display: inline-block;
+    }
+
+    button.writeBtn.btn.btn-primary {
+        margin-top: 7px;
+    }
+
+    div.input-group {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+</style>
+<script>
+    function checkLogined() {
+        var backurl = '/boardrestspring/checklogined';
+        $.ajax({
+            url: backurl,
+            success: function (responseObj) {
+                if (responseObj.status == 1) {
+                    //로그인된 경우
+                    logined();
+                } else {
+                    //로그아웃된 경우
+                    logouted();
+                }
+            },
+        });
+    }
+
+    $(function () {
+        //checkLogined();
+        // 메뉴 버튼 객체들
+        var $menuObj = $('div.nav2 > ul.nav > li > a');
+
+        // 글쓰기 버튼
+        var $writeBtn = $('button.writeBtn.btn.btn-primary');
+
+        // 세션 객체
+        var $section = $('#section');
+
+        $menuObj.click(function () {
+            // 클릭된 객체 href 속성값
+            var href = $(this).attr('href');
+            switch (href) {
+                case './boardlist.html':
+                case './login.html':
+                    $section.load(href, function (responseTxt, statusTxt, xhr) {
+                        if (statusTxt == 'error') alert('Error: ' + xhr.status + ': ' + xhr.statusText);
+                    });
+                    break;
+            }
+            // return false를 하지 않을 경우 페이지 자체가 이동된다.
+            return false;
+        });
+
+        $writeBtn.click(function () {
+            alert('클릭되었따.');
+            // 클릭된 객체 onclick 속성값
+            $section.load('./boardwrite.html', function (responseTxt, statusTxt, xhr) {
+                if (statusTxt == 'error') alert('Error: ' + xhr.status + ': ' + xhr.statusText);
+            });
+
+        });
+    });
+</script>
+<body class="container">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand nav1" href="#">
+                <div class="box">
+                    <img src="images/logo.png" alt="" width="50" height="50" align="left"
+                         style="vertical-align: middle" onclick="location.href='index.html'">
+                    <span onclick="location.href='index.html'">brb corp.</span>
+                </div>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse nav2" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a class="list" href="./boardlist.html">게시판</a></li>
+                <li><a class="login" href="./login.html">로그인</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<section id="section">
+    <article>
+
+    </article>
+</section>
+<footer>
+
+</footer>
+</body>
+</html>

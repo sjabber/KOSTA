@@ -1,0 +1,8 @@
+WARN  21-08-02 17:02:35[main] [LogTest:16] - warn
+ERROR 21-08-02 17:02:35[main] [LogTest:17] - error
+WARN  21-08-02 17:02:59[main] [LogTest:16] - warn
+ERROR 21-08-02 17:02:59[main] [LogTest:17] - error
+WARN  21-08-02 17:27:29[main] [LogTest:16] - warn
+ERROR 21-08-02 17:27:29[main] [LogTest:17] - error
+WARN  21-08-02 17:28:06 [main] [LogTest:16] - warn
+ERROR 21-08-02 17:28:06 [main] [LogTest:17] - error
