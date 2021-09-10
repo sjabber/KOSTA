@@ -22,7 +22,7 @@ public class CustomerDAOOracle implements CustomerDAO {
 			//System.out.println("JDBC 드라이버 로드 성공");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			return;
+			//return;
 		}
 	}
 

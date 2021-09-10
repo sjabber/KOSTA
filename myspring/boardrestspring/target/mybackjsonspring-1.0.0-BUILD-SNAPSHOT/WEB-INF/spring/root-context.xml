@@ -28,7 +28,7 @@
   <property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@127.0.0.1:1521:XE"/>
       
 	<property name="username" value="hr"/> 
-	  <property name="password" value="1673"/>
+	  <property name="password" value="hr"/>
  <property name="minimumIdle" value="1" />
 <!--       <property name="maximumPoolSize" value="10" /> -->
 <!--       <property name="connectionTestQuery" value="select 1 from sys.dual" /> -->
@@ -43,11 +43,21 @@
 	</bean> 
     
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean"
-		  id="sqlSessionFactory">
+		  id="sqlSessionFactory1">
+		  <qualifier value="UnderscoreToCamelCase"></qualifier>
+<!-- 		<property name="dataSource"      ref="dataSource"></property> -->
+		<property name="dataSource"      ref="dataSource2"></property>
+		<property name="configLocation"  value="classpath:mybatis-board-config.xml"/>
+	</bean>	
+	
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean"
+		  id="sqlSessionFactory2">
+		  <qualifier value="Underscore"></qualifier>
 <!-- 		<property name="dataSource"      ref="dataSource"></property> -->
 		<property name="dataSource"      ref="dataSource2"></property>
 		<property name="configLocation"  value="classpath:mybatis-config.xml"/>
 	</bean>		
+	
 	
 	<tx:annotation-driven transaction-manager="transactionManager" />
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

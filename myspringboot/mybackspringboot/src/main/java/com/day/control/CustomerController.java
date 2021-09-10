@@ -5,12 +5,17 @@ import com.day.exception.AddException;
 import com.day.exception.FindException;
 import com.day.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class CustomerController {
@@ -19,12 +24,12 @@ public class CustomerController {
     //private Logger log = Logger.getLogger(CustomerController.class);
 
 	@PostMapping("/login")
-    public String login(String id, String pwd, HttpSession session) {
+    public String login(@RequestBody Customer c, HttpSession session) {
 		//private Logger log = Logger.getLogger(CustomerController.class);
-		System.out.println(id + " : " + pwd);
+		System.out.println(c.getId() + " : " + c.getPwd());
 	    session.removeAttribute("loginInfo");
 	    try {
-            Customer loginInfo = service.login(id, pwd);
+            Customer loginInfo = service.login(c.getId(), c.getPwd());
             session.setAttribute("loginInfo", loginInfo);
             return "success";
 
@@ -32,6 +37,24 @@ public class CustomerController {
 	        e.printStackTrace();
             return "fail";
         }
+    }
+
+    @GetMapping("/logincheck")
+    public ResponseEntity<Map<String, String>> loginCheck(HttpSession session) {
+
+        Customer m = (Customer) session.getAttribute("loginInfo");
+        ResponseEntity<Map<String, String>> responseEntity;
+
+        Map<String, String> map = new HashMap<>();
+
+        if (m == null) {
+            responseEntity = new ResponseEntity(HttpStatus.BAD_REQUEST);
+        } else {
+            System.out.println(m.toString());
+            map.put("name", m.getName());
+            responseEntity = new ResponseEntity<>(map, HttpStatus.OK);
+        }
+        return responseEntity;
     }
 
 	@GetMapping("/logout")

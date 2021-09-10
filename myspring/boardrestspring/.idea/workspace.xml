@@ -10,8 +10,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6aeaf87-642b-4bee-a37e-01c846f825e6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../boardrestfront/WebContent/boardlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/../boardrestfront/WebContent/boardlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../boardrestfront/WebContent/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../boardrestfront/WebContent/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mybackspring/src/main/webapp/resources/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.day/mybackjsonspring/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.day/mybackjsonspring/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/mybackjsonspring-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/day/dao/CustomerDAOOracle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/mybackjsonspring-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/day/dao/CustomerDAOOracle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/mybackjsonspring-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/day/dao/OrderDAOOracle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/mybackjsonspring-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/day/dao/OrderDAOOracle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/mybackjsonspring-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/day/dao/ProductDAOOracle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/mybackjsonspring-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/day/dao/ProductDAOOracle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/mybackjsonspring-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/day/dto/OrderInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/mybackjsonspring-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/day/dto/OrderInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/mybackjsonspring-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/log4j.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/mybackjsonspring-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/log4j.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/mybackjsonspring-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/appServlet/servlet-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/mybackjsonspring-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/appServlet/servlet-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/mybackjsonspring-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/root-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/mybackjsonspring-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/root-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mybackjsonspring/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mybackjsonspring/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mybackjsonspring/src/main/webapp/WEB-INF/spring/root-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mybackjsonspring/src/main/webapp/WEB-INF/spring/root-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mybackjsonspring/target/m2e-wtp/web-resources/META-INF/maven/com.day/mybackjsonspring/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../mybackjsonspring/target/m2e-wtp/web-resources/META-INF/maven/com.day/mybackjsonspring/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mybackspring/target/m2e-wtp/web-resources/META-INF/maven/com.day/a/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../mybackspring/target/m2e-wtp/web-resources/META-INF/maven/com.day/a/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../restspring/target/m2e-wtp/web-resources/META-INF/maven/com.day/mybackjsonspring/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../restspring/target/m2e-wtp/web-resources/META-INF/maven/com.day/mybackjsonspring/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../myspringboot/boardrestspringboot/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../myspringboot/boardrestspringboot/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../myspringboot/mybackspringboot/src/main/java/com/day/control/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../myspringboot/mybackspringboot/src/main/java/com/day/control/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../myspringboot/mybackspringboot/src/main/java/com/day/dao/CustomerDAOOracle.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../myspringboot/mybackspringboot/src/main/java/com/day/dao/CustomerDAOOracle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../myspringboot/mybackspringboot/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../myspringboot/mybackspringboot/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +66,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../boardrestfront" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.22567567" />
     <property name="project.structure.side.proportion" value="0.36045057" />
@@ -174,6 +193,10 @@
       <workItem from="1627799302821" duration="12000" />
       <workItem from="1628049306509" duration="2279000" />
       <workItem from="1628053670772" duration="801000" />
+      <workItem from="1630098347919" duration="48000" />
+      <workItem from="1630463963955" duration="2718000" />
+      <workItem from="1630612435905" duration="3732000" />
+      <workItem from="1630812601911" duration="6373000" />
     </task>
     <servers />
   </component>

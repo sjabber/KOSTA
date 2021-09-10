@@ -62,3 +62,6 @@
 <context:component-scan base-package="com.day.dao"/>
 <context:component-scan base-package="com.day.service"/>
 </beans>
+
+<!-- root-context.xml은 DAO나 Service와 같은 Model 객체들을 관리한다. -->
+<!-- servlet-context.xml은 JSP, 서블릿같은 View와 Controller 객체들을 관리한다. -->
